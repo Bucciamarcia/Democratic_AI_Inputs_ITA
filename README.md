@@ -1,8 +1,20 @@
+# Video di introduzione
+
+https://youtu.be/Dvo5wsbWj7o
+
 # Chatbot per sondaggi di marketing e ricerca di mercato
 
 Questo progetto di ricerca mira a creare un chatbot di indagine investigativa incentrato su marketing e ricerca di mercato.
 L'obiettivo principale del chatbot è aiutare gli utenti ad arrivare a una risposta completa e dettagliata, che possa essere usata dal marketer in maniera utile. Il chatbot funge da strumento di ricerca per un ampio numero di qeustioni legate al business, ma non solo: può essere utilizzato per qualsasi tipo di domanda.
 Le informazioni degli utenti possono successivamente essere consolidate e utilizzate per scopi di ricerca (parte ancora da fare).
+
+## In breve
+
+- Il programma è in python.
+- Usare chat.py per far partire il chatbot.
+- Usare evaluate.py per riassumere un chat log.
+- Cambiare il file question.txt con la vostra domanda di ricerca per personalizzare lo script. Modificare gli altri file non dovrebbe essere necessario.
+- Creare un file key_openai.txt con dentro la propria api key di openai.
 
 ## Metodologia e ragionamento
 
