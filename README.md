@@ -1,134 +1,73 @@
-# Investigative Survey Chatbot for Morality, Ethics, and Epistemology
+# Chatbot per sondaggi di marketing e ricerca di mercato
 
-This research project aims to create an investigative survey chatbot focused on morality, ethics, and epistemology. The
-primary goal of the chatbot is to help users identify and articulate the axiomatic assumptions they hold. The chatbot
-serves as a survey tool to help democratize inputs to a wide number of public and social issues. The extracted
-information from users can later be consolidated and used for research purposes.
+Questo progetto di ricerca mira a creare un chatbot di indagine investigativa incentrato su marketing e ricerca di mercato.
+L'obiettivo principale del chatbot è aiutare gli utenti ad arrivare a una risposta completa e dettagliata, che possa essere usata dal marketer in maniera utile. Il chatbot funge da strumento di ricerca per un ampio numero di qeustioni legate al business, ma non solo: può essere utilizzato per qualsasi tipo di domanda.
+Le informazioni degli utenti possono successivamente essere consolidate e utilizzate per scopi di ricerca (parte ancora da fare).
 
-## Methodology and Reasoning
+## Metodologia e ragionamento
 
-The chatbot script uses a combination of file operations, API functions, and chat functions to create an interactive
-survey experience for users. It reads the research question, OpenAI API key, and system message from text files and uses
-the OpenAI API to generate responses based on the conversation history.
+Il chatbot utilizza una combinazione di operazioni sui file, funzioni API e funzioni chat per creare un file interattivo
+esperienza di sondaggio per gli utenti. Legge la domanda di ricerca, la chiave API OpenAI e il messaggio di sistema da file di testo e usa
+l'API OpenAI per generare risposte basate sulla cronologia delle conversazioni (nota: di default usa GPT-4, perché 3.5 tende a produrre risultati di qualità inferiore).
 
-The chatbot employs various epistemic techniques and follows behavioral guidelines outlined in the system message to
-engage users in a meaningful conversation about morality, ethics, and epistemology. The chat logs are saved in YAML
-format for later analysis and research purposes.
+Il chatbot segue le linee guida comportamentali delineate nel messaggio di sistema per coinvolgere gli utenti in una conversazione significativa sull'argomento della ricerca di marketing specificata. I registri delle chat vengono salvati in YAML  per analisi successive e scopi di ricerca.
 
-## Overview of the Chatbot Script
+## Messaggio di sistema
 
-The chatbot script is written in Python and utilizes the OpenAI API to generate responses based on user input. The
-script is divided into several sections, including file operations, API functions, and chat functions.
+Il messaggio di sistema è un file di testo che fornisce al chatbot le linee guida e il contesto per il suo comportamento e scopo. Include lo scopo generale, la domanda di ricerca, le tecniche epistemiche e le linee guida comportamentali per il chatbot.
 
-- **File Operations:** The file operations section contains functions for reading and writing files, such as opening and saving text files and
-YAML files. These functions are used to store the chat logs and read the research question, OpenAI API key, and system
-message.
+- **Scopo generale:** lo scopo generale del chatbot è quello di fungere da strumento di indagine investigativa su domande di marketing.
+Ha lo scopo di aiutare gli utenti a identificare e articolare le ipotesi assiomatiche che detengono ed estrarre informazioni che possono essere
+utilizzato per scopi di ricerca.
 
-- **API Functions:** The API functions section contains the `chatbot` function, which communicates with the OpenAI API to generate responses
-based on the conversation history. It handles retries and error handling in case of communication issues with the API.
+- **Domanda di ricerca:** la domanda di ricerca è la parte variabile del messaggio di sistema. Quin, nel file question.txt, si può specificare la domanda alla quale il chatbot cercherà di rispondere durante la conversazione con l'utente. Può includere informazioni contestuali, come sfondo sociale, legale, politico o eventi.
 
-- **Chat Functions:** The chat functions section contains functions for handling user input, composing the conversation, and generating
-chatbot responses. The main loop of the script is also present in this section, which continuously prompts the user for
-input and generates chatbot responses until the user types "DONE" to exit the survey.
+- **Tecniche epistemiche:** il messaggio di sistema delinea diverse tecniche epistemiche che il chatbot dovrebbe utilizzare durante la conversazione, come
+ragionamento socratico, pensiero dei principi primi, metodo scientifico, falsificazionismo, pensiero critico e riduzionismo e Olismo.
 
-## System Message
+- **Linee guida comportamentali:** il messaggio di sistema fornisce anche linee guida comportamentali per la condotta del chatbot, come evitare servilismo, educare e informare gli utenti, indagare sulle convinzioni degli utenti, mettere in luce e articolare ipotesi, nominare concetti e idee, porre domande e utilizzare un tono simile a quello dell'utente per metterlo a suo agio.
 
-The system message is a text file that provides the chatbot with guidelines and context for its behavior and purpose. It
-includes the overall purpose, research question, epistemic techniques, and behavioral guidelines for the chatbot.
+# Valutazione automatizzata
 
-- **Overall Purpose:** The chatbot's overall purpose is to act as an investigative survey tool focused on morality, ethics, and epistemology.
-It aims to help users identify and articulate the axiomatic assumptions they hold and extract information that can be
-used for research purposes.
+Questa seconda parte, in evaluate.py, elabora il log della chat tra utente e chatbot, ed estrae una serie di informazioni che il ricercatore può utilizzare nella sua analisi.
+L'obiettivo primario della valutazione chatbot deve indicare chiaramente le convinzioni, il ragionamento e la posizione dell'utente rispetto alla domanda di ricerca e identificare particolari scuole di pensiero, paradigmi morali o altri quadri.
 
-- **Research Question:** The research question is a dynamic part of the system message that can be updated to change the focus of the chatbot's
-survey. It may include contextual information, such as background social, legal, political, or events.
+## Metodologia e ragionamento
 
-- **Epistemic Techniques:** The system message outlines several epistemic techniques that the chatbot should employ during the conversation, such as
-Socratic Reasoning, First Principles Thinking, Scientific Method, Falsificationism, Critical Thinking, and Reductionism
-and Holism.
+Lo script del bot di valutazione utilizza una combinazione di operazioni sui file, funzioni API e funzioni di chat per creare un file
+esperienza di valutazione interattiva per gli utenti. Legge la domanda di ricerca, la chiave API OpenAI e il messaggio di sistema da
+file di testo e utilizza l'API OpenAI per generare risposte basate sulla cronologia delle conversazioni.
 
-- **Behavioral Guidelines:** The system message also provides behavioral guidelines for the chatbot's conduct, such as avoiding sycophancy, educating
-and informing users, unpacking and investigating user beliefs, spotlighting and articulating assumptions, naming
-concepts and ideas, asking questions, and meeting users where they are in terms of language and tone.
+Il chatbot di valutazione segue le linee guida delineate nel messaggio di sistema per analizzare e valutare quello dell'utente
+conversazione, identificare particolari scuole di pensiero, paradigmi morali o altre strutture e generare un riassunto
+e valutazione in formato YAML. I risultati della valutazione vengono salvati in un file separato per successive analisi e ricerche
+scopi.
 
-# Automated Evaluation
+# Descrizione di questa repository
 
-This part of the project aims to create an evaluation bot that reads, evaluates, condenses, and articulates the chat
-log between a user and another chatbot focused on morality, ethics, and epistemology. The primary goal of the evaluation
-chatbot is to clearly state the user's beliefs, reasoning, and position with respect to the research question and
-identify any particular schools of thought, moral paradigms, or other frameworks.
+## Cartelle
 
-## Overview of the Evaluation Chatbot Script
+- `chat_logs`: questa cartella contiene un elenco YAML di registri di chat condotti dal sistema. Questi file hanno timestamp e includono il nome dichiarato dall'utente.
 
-The evaluation chatbot script is written in Python and utilizes the OpenAI API to generate responses based on the
-conversation history. The script is divided into several sections, including file operations, API functions, and chat
-functions.
+- `evaluations`: questa cartella contiene l'output YAML dal chatbot di valutazione. Il nome del file viene mantenuto identico dal registro della chat per una facile correlazione.
 
-- **File Operations:** The file operations section contains functions for reading and writing files, such as opening and saving text files and
-YAML files. These functions are used to store the evaluation results and read the research question, OpenAI API key, and
-system message.
+## File
 
-- **API Functions:** The API functions section contains the `chatbot` function, which communicates with the OpenAI API to generate responses
-based on the conversation history. It handles retries and error handling in case of communication issues with the API.
+- `chat.py`: questo è lo script di chat principale. Aggiorna `question.txt` prima di eseguire la chat. In questas fase, va fatto partire il bot da console con `python chat.py` per iniziare la chat. L'idea è in futuro di aggiungere anche un'interfaccia utente.
 
-- **Chat Functions:** The chat functions section contains functions for handling user input, composing the conversation, and generating
-chatbot responses. The main loop of the script is also present in this section, which prompts the user for the chat log
-to summarize and evaluate, and generates the evaluation chatbot response.
+- `evaluate.py`: questo è il bot di valutazione. Viene usato per far partire lo script di Openai che crea la valutazione della chat. Una volta fatto partire lo script, va selezionata la chat sulla quale va fatto il riassunto.
 
-## System Message
+- `key_openai.txt`: questo file è escluso dal file `.gitignore`. Dovrai crearlo manualmente e posizionare la tua chiave Openai. Nota che questa repo prevede GPT-4 (da cambiare se non si ha accesso).
 
-The system message is a text file that provides the evaluation chatbot with guidelines and context for its behavior and
-purpose. It includes the overall purpose, research question, output format, level of detail, and next step for the
-evaluation chatbot.
+- `question.txt`: questa è la domanda principale della ricerca. Questa può essere una semplice domanda o può contenere alcune informazioni contestuali o un obiettivo di ricerca. È la parte che deve essere modificata per diri al boto cosa chiedere all'utente
 
-- **Overall Purpose:** The evaluation chatbot's overall purpose is to read, evaluate, condense, and articulate the chat log between a user and
-another chatbot focused on morality, ethics, and epistemology. It aims to clearly state the user's beliefs, reasoning,
-and position with respect to the research question and identify any particular schools of thought, moral paradigms, or
-other frameworks.
+- `system.txt`: questo è il messaggio SYSTEM predefinito per il chatbot principale. Include istruzioni da seguire per il chatbot del sondaggio. Contiene anche un segnaposto per la domanda di ricerca.
 
-- **Research Question:** The research question is a dynamic part of the system message that can be updated to change the focus of the evaluation
-chatbot's analysis. It is the same research question that the other chatbot was tasked with during the survey.
+- `system_consolidate.txt`: questo è il messaggio SYSTEM predefinito per il bot di valutazione. Allo stesso modo contiene un segnaposto per la domanda di ricerca e istruzioni su come il valutatore deve condurre le sue valutazioni.
 
-- **Output Format:** The evaluation chatbot's response should have two sections: a summary of the user's beliefs, positions, needs, and
-desires, and an evaluation that describes the philosophical, moral, ethical, or epistemic frameworks the user uses. The
-response should be formatted in YAML.
+# Limitazioni dello script al momento
 
-- **Level of Detail:** The evaluation chatbot should err on the side of 'too much' detail, as this step is a first pass at data processing. It
-is better to have an overly verbose evaluation rather than an overly simplified one, as the information can be reduced
-later if necessary.
-
-- **Next Step:** The user will submit a chat log in YAML format. The evaluation chatbot should read this YAML information, remove any
-user information for privacy, and output the summary and evaluation according to the specified YAML format.
-
-## Methodology and Reasoning
-
-The evaluation bot script uses a combination of file operations, API functions, and chat functions to create an
-interactive evaluation experience for users. It reads the research question, OpenAI API key, and system message from
-text files and uses the OpenAI API to generate responses based on the conversation history.
-
-The evaluation chatbot follows the guidelines outlined in the system message to analyze and evaluate the user's
-conversation, identify any particular schools of thought, moral paradigms, or other frameworks, and generate a summary
-and evaluation in YAML format. The evaluation results are saved in a separate file for later analysis and research
-purposes.
-
-# Description of this Repository
-
-## Folders
-
-- `chat_logs`: This folder contains a YAML list of chat logs conducted by the system. These files are timestamped and include the user's stated name. 
-
-- `evaluations`: This folder contains YAML output from the evaluation chatbot. The filename is kept identical from the chat log for easy correlation later. 
-
-## Files
-
-- `chat.py`: This is the main chat script. Update `question.txt` prior to running chat. The chatbot uses the terminal console to conduct the survey interview. 
-
-- `evaluate.py`: This is the evaluation bot. Its interaction is very simple, you only specify a chat log to process.
-
-- `key_openai.txt`: This file is excluded by the `.gitignore` file. You will need to manually create this and place your own key. 
-
-- `question.txt`: This is the main research question. This can be a simple question or it can contain some contextual information or a research objective. 
-
-- `system.txt`: This is the default SYSTEM message for the main chatbot. It includes instructions for the survey chatbot to follow. It also contains a placeholder for the research question.
-
-- `system_consolidate.txt`: This ist he default SYSTEM message for the evaluator bot. It likewise contains a placeholder for the research question as well as instructions as to how the evaluator is to conduct its evaluations.
+- Lo script si interrompe quando il log della chat arriva a 7500 caratteri (ringrazia l'utente e chiude la conversazione).
+- Lo script deve essere fatto partire da CMD.
+- La valutazione va fatta partire manualmente.
+- Non ci sono altre analisi automatiche o statistiche che vengono fatte dal bot.
