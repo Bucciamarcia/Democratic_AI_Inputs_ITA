@@ -63,7 +63,7 @@ def get_user_input():
     
     # check if scratchpad updated, continue
     if 'DONE' in text:
-        print('\n\n\nThank you for participating in this survey! Your results have been saved. Program will exit in 5 seconds.')
+        print('\n\n\nGrazie per aver partecipato al nostro sondaggio! Il tuo risultato è stato salvato. Il programma si chiuderà fra 5 secondi.')
         sleep(5)
         exit(0)
     if text == '':
@@ -86,7 +86,7 @@ def generate_chat_response(ALL_MESSAGES, conversation):
     # generate a response
     response, tokens = chatbot(conversation)
     if tokens > 7500:
-        print('Unfortunately, this conversation has become too long, so the survey must come to an end. Program will end in 5 seconds.')
+        print('Sfortunatamente questa conversazione è diventata troppo lunga, quindi non può continuare. Il programma si chiuderà fra 5 secondi.')
         sleep(5)
         exit(0)
     ALL_MESSAGES.append({'role': 'assistant', 'content': response})
@@ -105,10 +105,10 @@ if __name__ == '__main__':
     start_time = time()
     
     # get username, start conversation
-    print('\n\n****** IMPORTANT: ******\n\nType DONE to exit\n\nSurvey Question: %s' % research_question)
-    username = input('\n\n\nTo get started, please type in your name: ').strip()
+    print('\n\n****** IMPORTANTE: ******\n\nScrivi "DONE" (senza virgolette) per uscire dal programma\n\nDomanda di ricerca: %s' % research_question)
+    username = input('\n\n\nPer iniziare, per favore inserisci il tuo nome: ').strip()
     filename = f"chat_{start_time}_{username}.yaml"
-    text = f"Hello, my name is {username}."
+    text = f"Ciao, il mio nome è {username}."
     conversation = compose_conversation(ALL_MESSAGES, text, system_message)
     generate_chat_response(ALL_MESSAGES, conversation)
 
