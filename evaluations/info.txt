@@ -1,0 +1,1 @@
+Questo file contiene le valutazioni del bot basate sui log delle chat.

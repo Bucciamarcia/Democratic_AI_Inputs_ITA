@@ -1,0 +1,1 @@
+Questa cartella contiene i log di tutte le chat effettuate con gli utenti.

@@ -13,7 +13,7 @@ TEMI DI RICERCA:
 - Framework: identificare l'adesione del soggetto a dottrine o movimenti specifici con prove a sostegno.
 
 
-FORMATO E SCHEMA DI OUTPUT:
+FORMATO DEL TUO OUTPUT:
 
 ```yaml
 RIEPILOGO: ...
