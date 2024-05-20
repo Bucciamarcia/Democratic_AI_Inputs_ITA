@@ -14,7 +14,7 @@ Le informazioni degli utenti possono successivamente essere consolidate e utiliz
 - Usare chat.py per far partire il chatbot.
 - Usare evaluate.py per riassumere un chat log.
 - Cambiare il file question.txt con la vostra domanda di ricerca per personalizzare lo script. Modificare gli altri file non dovrebbe essere necessario.
-- Creare un file key_openai.txt con dentro la propria api key di openai.
+- Usare la variabile d'ambiente `OPENAI_APIKEY` per la chiave openai.
 
 ## Metodologia e ragionamento
 
@@ -68,8 +68,6 @@ scopi.
 - `chat.py`: questo è lo script di chat principale. Aggiorna `question.txt` prima di eseguire la chat. In questas fase, va fatto partire il bot da console con `python chat.py` per iniziare la chat. L'idea è in futuro di aggiungere anche un'interfaccia utente.
 
 - `evaluate.py`: questo è il bot di valutazione. Viene usato per far partire lo script di Openai che crea la valutazione della chat. Una volta fatto partire lo script, va selezionata la chat sulla quale va fatto il riassunto.
-
-- `key_openai.txt`: questo file è escluso dal file `.gitignore`. Dovrai crearlo manualmente e posizionare la tua chiave Openai. Nota che questa repo prevede GPT-4 (da cambiare se non si ha accesso).
 
 - `question.txt`: questa è la domanda principale della ricerca. Questa può essere una semplice domanda o può contenere alcune informazioni contestuali o un obiettivo di ricerca. È la parte che deve essere modificata per diri al boto cosa chiedere all'utente
 
