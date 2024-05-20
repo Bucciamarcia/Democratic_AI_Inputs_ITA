@@ -1,9 +1,11 @@
 import os
-import openai
+from openai import OpenAI, OpenAIError
 from time import time, sleep
-import textwrap
-import sys
 import yaml
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_APIKEY"),
+)
 
 
 ###     file operations
@@ -38,9 +40,11 @@ def chatbot(conversation, model="gpt-4", temperature=0):
     retry = 0
     while True:
         try:
-            response = openai.ChatCompletion.create(model=model, messages=conversation, temperature=temperature)
-            text = response['choices'][0]['message']['content']
-            return text, response['usage']['total_tokens']
+            response = client.chat.completions.create(
+                model=model, messages=conversation, temperature=temperature
+            )
+            text = response.choices[0].message.content
+            return text, response.usage.total_tokens
         except Exception as oops:
             print(f'\n\nError communicating with OpenAI: "{oops}"')
             if 'maximum context length' in str(oops):
@@ -94,7 +98,6 @@ def yaml_to_text(data):
 if __name__ == '__main__':
     # instantiate chatbot, variables
     research_question = open_file('question.txt')
-    openai.api_key = open_file('key_openai.txt').strip()
     system_message = open_file('system_consolidate.txt').replace('<<QUESTION>>', research_question)
     conversation = list()
     files = os.listdir('chat_logs')
