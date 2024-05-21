@@ -96,7 +96,7 @@ def compose_conversation(ALL_MESSAGES, text, system_message):
 def generate_chat_response(ALL_MESSAGES, conversation):
     # generate a response
     response, tokens = chatbot(conversation)
-    if tokens > 7500:
+    if tokens > 25000:
         print(
             "Sfortunatamente questa conversazione è diventata troppo lunga, quindi non può continuare. Il programma si chiuderà fra 5 secondi."
         )
