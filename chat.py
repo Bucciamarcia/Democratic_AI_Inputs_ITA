@@ -134,10 +134,12 @@ def evaluate_stop_condition(conversation):
         {
             "role": "system",
             "content": (
-                "Sei un'intelligenza artificiale che deve valutare una conversazione."
-                "Il tuo unico compito è valutare se la conversazione è terminata."
-                "Il tuo output è true se l'agente ha ringraziato l'utente alla fine del sondaggio,"
-                "altrimenti è false."
+                "Sei un'intelligenza artificiale che deve valutare una conversazione. "
+                "Il tuo unico compito è valutare se la conversazione è terminata. "
+                "Il tuo output è true se l'agente ha ringraziato l'utente alla fine del sondaggio, "
+                "altrimenti è false.\n\n"
+                "NOTA: Se il tuo output è true, la finestra di chat dell'agente verrà automaticamente disconnessa: "
+                "quindi rispondi true solo se l'agente ha propriamente salutato l'utente."
             ),
         },
         {"role": "user", "content": conversation},
