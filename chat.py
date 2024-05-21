@@ -1,4 +1,5 @@
 from openai import OpenAI, OpenAIError
+import json
 import os
 from time import time, sleep
 import textwrap
@@ -109,6 +110,56 @@ def generate_chat_response(ALL_MESSAGES, conversation):
     print(formatted_text)
 
 
+def evaluate_stop_condition(conversation):
+    tools = [
+        {
+            "type": "function",
+            "function": {
+                "name": "valuta_condizione_di_stop",
+                "description": "Valuta se la conversazione è giunta al termine",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "is_done": {
+                            "type": "boolean",
+                            "description": "Indica se la conversazione è terminata",
+                        }
+                    },
+                    "required": ["is_done"],
+                },
+            },
+        }
+    ]
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "Sei un'intelligenza artificiale che deve valutare una conversazione."
+                "Il tuo unico compito è valutare se la conversazione è terminata."
+                "Il tuo output è true se l'agente ha ringraziato l'utente alla fine del sondaggio,"
+                "altrimenti è false."
+            ),
+        },
+        {"role": "user", "content": conversation},
+    ]
+    completion = client.chat.completions.create(
+        model="gpt-4o",
+        messages=messages,
+        tools=tools,
+        tool_choice={
+            "type": "function",
+            "function": {
+                "name": "valuta_condizione_di_stop",
+            }
+        }
+    )
+
+    args = json.loads(
+        completion.choices[0].message.tool_calls[0].function.arguments
+    )
+    return args["is_done"]
+
+
 if __name__ == "__main__":
     # instantiate chatbot, variables
     research_question = open_file("question.txt")
@@ -137,3 +188,7 @@ if __name__ == "__main__":
 
         generate_chat_response(ALL_MESSAGES, conversation)
         save_yaml(f"chat_logs/{filename}", ALL_MESSAGES)
+        if evaluate_stop_condition(text):
+            print("Grazie per aver partecipato al nostro sondaggio!")
+            sleep(5)
+            exit(0)
