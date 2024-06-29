@@ -9,7 +9,7 @@ client = OpenAI(
 )
 
 
-###     file operations
+# file operations
 
 
 def save_file(filepath, content):
@@ -33,7 +33,7 @@ def open_yaml(filepath):
     return data
 
 
-###     API functions
+# API functions
 
 
 def chatbot(conversation, model="gpt-4o", temperature=0):
@@ -52,7 +52,7 @@ def chatbot(conversation, model="gpt-4o", temperature=0):
         except Exception as oops:
             print(f'\n\nError communicating with OpenAI: "{oops}"')
             if "maximum context length" in str(oops):
-                a = conversation.pop(0)
+                conversation.pop(0)
                 print("\n\n DEBUG: Trimming oldest message")
                 continue
             retry += 1
@@ -63,7 +63,7 @@ def chatbot(conversation, model="gpt-4o", temperature=0):
             sleep(2 ** (retry - 1) * 5)
 
 
-###     CHAT FUNCTIONS
+# CHAT FUNCTIONS
 
 
 def get_user_input():
